@@ -1,8 +1,8 @@
+include_recipe "logrotate"
+
 package "memcached" do
   action :install
 end
-
-service "memcached"
 
 template "/etc/memcached.conf" do
   mode "0644"
@@ -16,3 +16,13 @@ template "/etc/memcached.conf" do
   )
   notifies :restart, "service[memcached]", :immediately
 end
+
+logrotate_app "memcached" do
+  cookbook "logrotate"
+  path node["memcached"]["log_file"]
+  frequency "daily"
+  rotate 7
+  create "644 root root"
+end
+
+service "memcached"

@@ -8,6 +8,10 @@ Installs and configures memcached.
 
 * Ubuntu 11.10 (Oneiric)
 
+## Cookbooks ##
+
+* logrotate
+
 # Attributes #
 
 * `node["memcached"]["port"]` - Port to run memcached on.
