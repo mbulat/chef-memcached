@@ -1,19 +1,21 @@
-# Description #
+# memcached [![Build Status](https://secure.travis-ci.org/hectcastro/chef-memcached.png?branch=master)](http://travis-ci.org/hectcastro/chef-memcached)
+
+## Description
 
 Installs and configures memcached.
 
-# Requirements #
+## Requirements
 
-## Platforms ##
+### Platforms
 
 * Ubuntu 11.10 (Oneiric)
 * Ubuntu 12.04 (Precise)
 
-## Cookbooks ##
+### Cookbooks
 
 * logrotate
 
-# Attributes #
+## Attributes
 
 * `node["memcached"]["port"]` - Port to run memcached on.
 * `node["memcached"]["listen"]` - IP for the daemon to bind to.
@@ -22,10 +24,10 @@ Installs and configures memcached.
   megabytes.
 * `node["memcached"]["max_connections"]` - Maximum number of ports to consume.
 
-# Recipes #
+## Recipes
 
 * `recipe[memcached]` will install memcached.
 
-# Usage #
+## Usage
 
 Currently only supports one instance of memcached per node.
