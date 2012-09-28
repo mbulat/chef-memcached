@@ -14,11 +14,18 @@ describe_recipe "memcached::default" do
 
   describe "files" do
     it "creates the configuration file" do
-      file("/etc/memcached.conf").must_exist
+      case node["platform_family"]
+      when "rhel"
+        file("/etc/sysconfig/memcached").must_exist 
+      when "debian"
+        file("/etc/memcached.conf").must_exist
+      end
     end
 
     it "creates the log file" do
-      file(node["memcached"]["log_file"]).must_exist
+      if node["platform_family"] == "debian"
+        file(node["memcached"]["log_file"]).must_exist
+      end
     end
   end
 

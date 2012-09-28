@@ -10,6 +10,8 @@ Installs and configures memcached.
 
 * Ubuntu 11.10 (Oneiric)
 * Ubuntu 12.04 (Precise)
+* CentOS 6.3
+* RedHat 6.3
 
 ### Cookbooks
 
@@ -30,4 +32,5 @@ Installs and configures memcached.
 
 ## Usage
 
-Currently only supports one instance of memcached per node.
+Currently only supports one instance of memcached per node.  Also, logging is
+not supported on the RedHat family of distributions.
