@@ -25,14 +25,13 @@ template "memcached_config" do
   notifies :restart, "service[memcached]", :immediately
 end
 
-if node["platform_family"] == "debian"
-  logrotate_app "memcached" do
-    cookbook "logrotate"
-    path node["memcached"]["log_file"]
-    frequency "daily"
-    rotate 7
-    create "644 root root"
-  end
+logrotate_app "memcached" do
+  cookbook "logrotate"
+  path node["memcached"]["log_file"]
+  frequency "daily"
+  rotate 7
+  create "644 root root"
+  only_if { node["platform_family"] == "debian" }
 end
 
 service "memcached" do
