@@ -1,25 +1,16 @@
-desc "Runs foodcritic"
-task :foodcritic do
-  if Gem::Version.new("1.9.2") <= Gem::Version.new(RUBY_VERSION.dup)
-    sandbox = File.join(File.dirname(__FILE__), %w{tmp foodcritic cookbook})
-    prepare_foodcritic_sandbox(sandbox)
+desc "test"
+task :default => [:foodcritic, :boot, :cook]
 
-    sh "foodcritic --epic-fail any #{File.dirname(sandbox)}"
-  else
-    STDERR.puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
-  end
+desc "run foodcritic"
+task :foodcritic do
+  sh "foodcritic . --epic-fail any 2>/dev/null"
 end
 
-task :default => "foodcritic"
+desc "1 cold cook, 1 warm cook"
+task :boot do
+  sh("vagrant destroy -f && vagrant up")
+end
 
-private
-
-def prepare_foodcritic_sandbox(sandbox)
-  files = %w{*.md *.rb attributes definitions files providers
-recipes resources templates}
-
-  rm_rf sandbox
-  mkdir_p sandbox
-  cp_r Dir.glob("{#{files.join(',')}}"), sandbox
-  puts "\n\n"
+task :cook do
+  sh("vagrant provision")
 end
