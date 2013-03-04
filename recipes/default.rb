@@ -20,7 +20,9 @@ template "memcached_config" do
     :port             => node["memcached"]["port"],
     :max_memory       => node["memcached"]["max_memory"],
     :max_connections  => node["memcached"]["max_connections"],
-    :log_file         => node["memcached"]["log_file"]
+    :log_file         => node["memcached"]["log_file"],
+    :user             => node["memcached"]["user"],
+    :verbose          => node["memcached"]["verbose"]
   )
   notifies :restart, "service[memcached]", :immediately
 end
