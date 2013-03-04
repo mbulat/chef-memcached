@@ -25,6 +25,8 @@ Installs and configures memcached.
 * `node["memcached"]["max_memory"]` - Maximum amount of memory to consume in
   megabytes.
 * `node["memcached"]["max_connections"]` - Maximum number of ports to consume.
+* `node["memcached"]["user"]` - User to run memcached as.
+* `node["memcached"]["verbose"]` - Enable verbose logging.
 
 ## Recipes
 
