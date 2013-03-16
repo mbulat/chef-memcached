@@ -4,6 +4,8 @@ package "memcached" do
   action :install
 end
 
+user "memcache"
+
 template "memcached_config" do
   case node["platform_family"]
   when "rhel"
@@ -38,5 +40,5 @@ end
 
 service "memcached" do
   supports :status => true, :start => true, :stop => true, :restart => true
-  action :enable
+  action [:enable, :start]
 end
