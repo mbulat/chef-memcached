@@ -8,6 +8,7 @@ Installs and configures memcached.
 
 ### Platforms
 
+* Ubuntu 10.04 (Lucid)
 * Ubuntu 11.10 (Oneiric)
 * Ubuntu 12.04 (Precise)
 * CentOS 6.3

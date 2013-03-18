@@ -1,3 +1,7 @@
+## v0.2.0
+
+* Add support for Ubuntu 10.04 (Lucid).
+
 ## v0.1.0
 
 * Added local Vagrant/Berkshelf test workflow.
